@@ -25,8 +25,10 @@ jobs:
         uses: actions/checkout@v4
       - name: Configure Pages
         uses: actions/configure-pages@v5
-      - name: Enable cable selection and deletion
-        run: sed -i 's#</body>#<script src="fix-cable-delete.js"></script></body>#' index.html
+      - name: Inject latest app enhancements
+        run: |
+          sed -i 's#</body>#<script src="fix-cable-delete.js"></script></body>#' index.html
+          sed -i 's#</body>#<script src="pro-upgrade.js"></script></body>#' index.html
       - name: Upload site
         uses: actions/upload-pages-artifact@v3
         with:
